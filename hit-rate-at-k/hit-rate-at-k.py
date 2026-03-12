@@ -1,4 +1,3 @@
-import numpy as np
 def hit_rate_at_k(recommendations, ground_truth, k):
     """
     Compute the hit rate at K.
