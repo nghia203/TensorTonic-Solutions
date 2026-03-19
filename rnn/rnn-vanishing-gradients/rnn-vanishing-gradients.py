@@ -6,12 +6,11 @@ def compute_gradient_norm_decay(T: int, W_hh: np.ndarray) -> list:
     Returns list of gradient norms.
     """
     # YOUR CODE HERE
-    grad_prev = 1.0
-    grad_list = [(grad_prev)]
+    grad = 1.0
+    grad_list = [(grad)]
     for t in range(1, T):
         norm = np.linalg.norm(W_hh, ord = 2)
-        grad = grad_prev * norm
+        grad = grad * norm
         grad_list.append(grad)
-        grad_prev = grad
     return grad_list
     pass
