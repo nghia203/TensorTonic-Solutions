@@ -12,8 +12,6 @@ def linear_layer_forward(X, W, b):
 
     _, d_out = W.shape
 
-    y = np.zeros((num_samples, d_out))
-
     y = np.dot(X, W) + b
     return y.tolist()
     
