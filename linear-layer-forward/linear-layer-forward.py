@@ -8,9 +8,6 @@ def linear_layer_forward(X, W, b):
     X = np.asarray(X)
     W = np.asarray(W)
     b = np.asarray(b)
-    num_samples, _ = X.shape
-
-    _, d_out = W.shape
 
     y = np.dot(X, W) + b
     return y.tolist()
