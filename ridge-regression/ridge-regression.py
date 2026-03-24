@@ -9,15 +9,12 @@ def ridge_regression(X, y, lam):
     y = np.asarray(y)
 
     r1 = X.T @ X
+    
     d = r1.shape[0]
     
     I = np.eye(d)
 
-    inv_matrix = np.linalg.inv(r1 + lam * I)
-
-    r2 = X.T @ y
-
-    w = inv_matrix @ r2
+    w = np.linalg.solve(r1 + I * lam, X.T @ y)
 
     return w
     
