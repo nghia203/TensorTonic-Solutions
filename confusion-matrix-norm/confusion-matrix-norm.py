@@ -16,7 +16,7 @@ def confusion_matrix_norm(y_true, y_pred, num_classes=None, normalize='none'):
     K = num_classes if num_classes is not None else int(np.max([y_true, y_pred]) + 1)
     
     indices = y_true * K + y_pred
-    cm = np.bincount(indices, minlength=K*K).reshape(K, K)
+    cm = np.bincount(indices, minlength = K * K).reshape(K, K)
     
     if normalize == 'none':
         return cm.astype(np.int64)
@@ -25,9 +25,9 @@ def confusion_matrix_norm(y_true, y_pred, num_classes=None, normalize='none'):
     epsilon = 1e-15
     
     if normalize == 'true':
-        cm /= (cm.sum(axis=1, keepdims=True) + epsilon)
+        cm /= (cm.sum(axis = 1, keepdims = True) + epsilon)
     elif normalize == 'pred':
-        cm /= (cm.sum(axis=0, keepdims=True) + epsilon)
+        cm /= (cm.sum(axis = 0, keepdims = True) + epsilon)
     elif normalize == 'all':
         cm /= (cm.sum() + epsilon)
     return cm
