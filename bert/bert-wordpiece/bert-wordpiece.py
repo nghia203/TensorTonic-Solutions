@@ -28,7 +28,7 @@ class WordPieceTokenizer:
         if len(word) > self.max_word_len:
             return [self.unk_token]
 
-        output_token = []
+        output_tokens = []
         start = 0
         is_bad = False
 
@@ -37,22 +37,25 @@ class WordPieceTokenizer:
             cur_substr = None
 
             while start < end:
-                substr = word[start : end]
+                substr = word[start:end]
                 if start > 0:
-                    substr = "##" + substr
+                    substr = '##' + substr
+
                 if substr in self.vocab:
                     cur_substr = substr
                     break
+
                 end -= 1
-                
+
             if cur_substr is None:
                 is_bad = True
                 break
-                
-            output_token.append(cur_substr)
+
+            output_tokens.append(cur_substr)
             start = end
+        
         if is_bad:
             return [self.unk_token]
 
-        return output_token
+        return output_tokens
         pass
